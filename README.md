@@ -20,11 +20,13 @@ We began by standardizing the features and splitting the dataset into a 60% trai
 ## **iv. Results and Conclusion**
 
 ![Training and Validation Loss Curve, Original](neural_network_loss_original.png)
+
 Figure 1: Training and Validation Loss Curves for Old Model
 
 From the Training and Validation Loss Curves, we observed a steady and expected decrease in both training and validation loss without any oscillations, which indicates stable learning during training. Around 150 epochs, the validation loss plateaued slightly below 3, which implies that our model stopped improving on unseen data. Overall, our model achieved a test accuracy of 28.93%. This means that the model significantly underfits the data.
 
 ![Confusion Matrix For Genre Prediction Accuracy, Original](confusion_matrix_original.png)
+
 Figure 2: Confusion Matrix for Old Model
 
 From the diagonal entries of the confusion matrix, the model’s classification performance varies widely across genres. For example, genres like Ambient and Techno have a large number of correctly predicted observations, whereas genres like Indie and K-Pop have no correctly predicted observations.
@@ -36,11 +38,13 @@ After removing outliers, we performed PCA to reduce the dimensionality of the da
 Next, we trained a neural network using the aforementioned dataset. This model is similar to our previous model, with four hidden layers with 256, 128, 64, and 32 neurons. It also used ReLU, dropout layers, and batch normalization for regularization, stability, and generalization. We did change the learning rate to 0.0005 for training the model over 300 epochs.
 
 ![Training and Validation Loss Curve, Updated](neural_network_loss_updated.png)
+
 Figure 3: Training and Validation Loss Curves for New Model
 
 From the training and validation loss curves, we expected the new model to perform well. We did notice more oscillations compared to the previous model. Nevertheless, with an overall test accuracy of 34.57%, our new model performed significantly better than the previous model with a 5.64% gain in accuracy. Additionally, we had the model create multiple predictions for further testing: the top-2 accuracy, top-3 accuracy, and top-4 accuracy are 47.35%, 54.47%, and 59.55%, respectively.
 
 ![Confusion Matrix For Genre Prediction Accuracy, Updated](confusion_matrix_updated.png)
+
 Figure 4: Confusion Matrix for New Model
 
 Comparing the confusion matrix of our old model versus our new model, we noticed significant prediction improvements. There was only one genre with no correct prediction in the new model, alt-rock, compared to three genres with no correct prediction in the old model. Furthermore, most genres observed more accurate predictions in the new model, like gospel, which increased from 103 to 134 correct predictions. Furthermore, the models are similar to each other in that they both performed really unevenly at classification for each genre. For example, Ambient and Techno have a large number of observations correctly predicted, whereas alt-rock, folk and indie have few or no correctly predicted observations. From these results, we believe that both models perform well on genres with distinct and easily identifiable audio features, while they struggle with genres with overlapping audio characteristics with other genres. Our argument is grounded in the broader context of the music industry, where genre boundaries are inherently subjective and socially constructed. Songs are often genre labeled differently depending on the listeners, resulting in ambiguity. Many artists further challenge these blurred boundaries by creating multi-genre tracks and albums. For example, Taylor Swift is known for writing popular hits and albums that span genres such as pop, country, indie, and alternative, while Post Malone’s latest album “F-1 Trillion” marks a significant transition from hip hop and pop to country.
